@@ -1,0 +1,22 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t tejozarkar/docker-angular -f Dockerfile.dev . 
+
+script:
+    - docker run -e CI=true -p 80:3000 tejozarkar/docker-angular npm run lint
+
+deploy:
+    provider: elasticbeanstalk
+    region: "ap-south-1"
+    app: "teensy-client"
+    env: "TeensyClient-env"
+    bucket_name: "elasticbeanstalk-ap-south-1-509006680370"
+    bucket_path: "teensy-client"
+    edge: true
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
