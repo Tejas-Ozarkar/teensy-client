@@ -7,4 +7,4 @@ RUN npm run build
 
 FROM nginx
 EXPOSE 80
-COPY --from=builder /app/dist/angular-docker-test /usr/share/nginx/html
+COPY --from=builder /app/dist/teensy-client /usr/share/nginx/html
