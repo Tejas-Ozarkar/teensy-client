@@ -1,0 +1,24 @@
+<app-custom-modal title="Create Group">
+    <div modal-header>
+        <h4 class="modal-title pull-left"> Create Group </h4>
+        <button type="button"
+                class="close pull-right"
+                aria-label="Close"
+                (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  <div modal-body>
+    <input type="text"
+           [(ngModel)]="group.title">
+    <input type="text"
+           [(ngModel)]="group.description">
+  </div>
+  <div modal-footer>
+    <button class="btn btn-success"
+            (click)="createGroup()">Create</button>
+    <button type="button"
+            class="btn btn-default"
+            (click)="modalRef.hide()">Close</button>
+  </div>
+</app-custom-modal>

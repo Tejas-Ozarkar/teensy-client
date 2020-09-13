@@ -19,7 +19,8 @@ export class SigninComponent implements OnInit {
   public signIn(): void {
     this.authService.signin(this.user).subscribe(
       (resp) => {
-        localStorage.setItem('loggedin-user', resp.toString())
+        console.log(resp);
+        localStorage.setItem('loggedin-user', JSON.stringify(resp))
       },
       (err) => {
         localStorage.removeItem('loggedin-user');

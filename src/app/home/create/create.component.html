@@ -1,0 +1,17 @@
+<div class="btn-group" dropdown>
+  <button id="button" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+          aria-controls="dropdown-animated"> Button dropdown <span class="caret"></span>
+  </button>
+  <ul id="dropdown" *dropdownMenu class="dropdown-menu"
+      role="menu" aria-labelledby="button-animated">
+    <li role="menuitem">
+      <a class="dropdown-item" (click)="openCreateUriModal()">Url</a>
+    </li>
+    <li role="menuitem">
+      <a class="dropdown-item" (click)="openCreateCardModal()">Card</a>
+    </li>
+    <li role="menuitem">
+      <a class="dropdown-item" (click)="openCreateGroupModal()">Group</a>
+    </li>
+  </ul>
+</div>

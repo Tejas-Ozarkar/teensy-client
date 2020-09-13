@@ -15,11 +15,12 @@ export class AuthService {
   public signin(user: User): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(
       `api/auth/signin`,
-      user
+      user,
+      {headers:{skip:"true"}}
     );
   }
 
   public signup(user: SignupUser): Observable<GenericResponse> {
-    return this.http.post<GenericResponse>( `api/auth/signup`, user);
+    return this.http.post<GenericResponse>( `api/auth/signup`, user,{headers:{skip:"true"}});
   }
 }
