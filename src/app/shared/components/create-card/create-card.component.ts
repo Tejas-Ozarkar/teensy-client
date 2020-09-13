@@ -12,7 +12,8 @@ export class CreateCardComponent {
 
   public card: Card;
 
-  constructor(public modalRef: BsModalRef,
+  constructor(
+    public modalRef: BsModalRef,
     private readonly cardService: CardService) {
     this.card = new Card();
   }

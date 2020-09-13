@@ -20,7 +20,7 @@ export class SigninComponent implements OnInit {
     this.authService.signin(this.user).subscribe(
       (resp) => {
         console.log(resp);
-        localStorage.setItem('loggedin-user', JSON.stringify(resp))
+        localStorage.setItem('loggedin-user', JSON.stringify(resp));
       },
       (err) => {
         localStorage.removeItem('loggedin-user');

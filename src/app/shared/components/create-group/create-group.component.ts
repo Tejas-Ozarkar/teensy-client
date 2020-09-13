@@ -12,7 +12,8 @@ export class CreateGroupComponent {
 
   public group: Group;
 
-  constructor(public modalRef: BsModalRef,
+  constructor(
+    public modalRef: BsModalRef,
     private readonly groupService: GroupService) {
     this.group = new Group();
   }

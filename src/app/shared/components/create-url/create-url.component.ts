@@ -11,25 +11,23 @@ import { UrlService } from '../../services/url.service';
 export class CreateUrlComponent implements OnInit {
   closeBtnName: string;
   public url: Url;
- 
-  constructor(public modalRef: BsModalRef,
+
+  constructor(
+    public modalRef: BsModalRef,
     private readonly urlService: UrlService) {
-      this.url = new Url();
-    }
- 
+    this.url = new Url();
+  }
+
   ngOnInit() {
   }
 
-  public createUrl(){
+  public createUrl() {
     this.urlService.createTinyUrl(this.url)
-    .subscribe(resp=>{
-      console.log(resp)
-      this.urlService.getLongUrl(this.url.shorturl).subscribe(resp=>{
-        console.log(resp);
+      .subscribe(resp => {
+
       });
-    });
     this.modalRef.hide();
-    
+
   }
 }
 

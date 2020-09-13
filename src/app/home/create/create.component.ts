@@ -1,12 +1,10 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CreateCardComponent } from 'src/app/shared/components/create-card/create-card.component';
 import { CreateGroupComponent } from 'src/app/shared/components/create-group/create-group.component';
 import { CreateUrlComponent } from 'src/app/shared/components/create-url/create-url.component';
-import { Url } from 'src/app/shared/models/url-model';
-import { UrlService } from 'src/app/shared/services/url.service';
- 
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -20,23 +18,22 @@ export class CreateComponent {
 
   constructor(
     private readonly modalService: BsModalService,
-    ) {
+  ) {
   }
- 
-  public openCreateUriModal(){
+
+  public openCreateUriModal() {
     this.modalRef = this.modalService.show(CreateUrlComponent);
     this.modalRef.content.closeBtnName = 'Close';
-  } 
+  }
 
-  public openCreateCardModal(){
+  public openCreateCardModal() {
     this.modalRef = this.modalService.show(CreateCardComponent);
     this.modalRef.content.closeBtnName = 'Close';
   }
 
-  public openCreateGroupModal(){
+  public openCreateGroupModal() {
     this.modalRef = this.modalService.show(CreateGroupComponent);
     this.modalRef.content.closeBtnName = 'Close';
   }
 
-  
 }

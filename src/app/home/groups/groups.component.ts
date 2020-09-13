@@ -18,7 +18,7 @@ export class GroupsComponent implements OnInit {
   ngOnInit(): void {
     this.groupService.getAllGroups().subscribe(resp => {
       this.groups = resp;
-    })
+    });
   }
 
 }

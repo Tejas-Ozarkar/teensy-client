@@ -4,5 +4,5 @@ import { Url } from './url-model';
 export class CardResponse extends Card {
     groupid: number;
     grouptitle: string;
-    groupdescription: string;  
+    groupdescription: string;
 }

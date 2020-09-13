@@ -10,12 +10,13 @@ import { UrlService } from '../shared/services/url.service';
 })
 export class RedirectionComponent implements OnInit {
 
-  constructor(private readonly urlService: UrlService,
+  constructor(
+    private readonly urlService: UrlService,
     private readonly route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.urlService.getLongUrl(this.route.snapshot.params.id)
-      .subscribe((resp:Url) => {
+      .subscribe((resp: Url) => {
         window.location.href = resp.longurl;
       });
   }

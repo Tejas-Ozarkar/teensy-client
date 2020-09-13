@@ -10,17 +10,17 @@ import { SignupUser } from '../shared/models/signup-user.model';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
 
   public signin(user: User): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(
       `api/auth/signin`,
       user,
-      {headers:{skip:"true"}}
+      { headers: { skip: 'true' } }
     );
   }
 
   public signup(user: SignupUser): Observable<GenericResponse> {
-    return this.http.post<GenericResponse>( `api/auth/signup`, user,{headers:{skip:"true"}});
+    return this.http.post<GenericResponse>(`api/auth/signup`, user, { headers: { skip: 'true' } });
   }
 }
