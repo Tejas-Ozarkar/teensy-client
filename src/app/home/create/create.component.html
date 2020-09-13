@@ -1,8 +1,8 @@
 <div class="btn-group" dropdown>
-  <button id="button" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
-          aria-controls="dropdown-animated"> Button dropdown <span class="caret"></span>
+  <button id="button" dropdownToggle type="button" class="btn create-btn"
+          aria-controls="dropdown-animated">  + Create
   </button>
-  <ul id="dropdown" *dropdownMenu class="dropdown-menu"
+  <ul id="dropdown" *dropdownMenu class="dropdown-menu dropdown-menu-right overflow-hidden"
       role="menu" aria-labelledby="button-animated">
     <li role="menuitem">
       <a class="dropdown-item" (click)="openCreateUriModal()">Url</a>

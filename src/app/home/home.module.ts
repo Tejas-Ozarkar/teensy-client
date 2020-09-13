@@ -9,6 +9,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { GroupsComponent } from './groups/groups.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { GroupsComponent } from './groups/groups.component';
     HomeRoutingModule,
     BsDropdownModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    SharedModule
   ]
 })
 export class HomeModule { }
