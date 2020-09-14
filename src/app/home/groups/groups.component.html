@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3" *ngFor="let group of groups">
+    <div class="col-md-3" *ngFor="let group of groups" (click)="gotoGroupInfo(group.id)">
       <div class="card p-3 mb-3">
         <h4> {{group.title}} </h4>
         <p> {{group.description}} </p>

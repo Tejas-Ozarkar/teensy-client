@@ -10,10 +10,11 @@ import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { GroupsComponent } from './groups/groups.component';
 import { SharedModule } from '../shared/shared.module';
+import { GroupComponent } from './group/group.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, CreateComponent, GroupsComponent],
+  declarations: [HomeComponent, CreateComponent, GroupsComponent, GroupComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

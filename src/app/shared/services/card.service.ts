@@ -13,4 +13,8 @@ export class CardService {
   public createCard(card: Card){
     return this.http.post<CardResponse>(`/api/card`, card);
   }
+
+  public getCardsByGroup(groupId: number){
+    return this.http.get<CardResponse[]>(`/api/card/${groupId}`);
+  }
 }

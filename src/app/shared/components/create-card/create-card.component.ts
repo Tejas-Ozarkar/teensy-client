@@ -11,6 +11,9 @@ import { CardService } from '../../services/card.service';
 export class CreateCardComponent {
 
   public card: Card;
+  public newGroup: object;
+
+  public groupId: number
 
   constructor(
     public modalRef: BsModalRef,
@@ -19,8 +22,9 @@ export class CreateCardComponent {
   }
 
   public createCard() {
+    this.card.groupid = this.groupId;
     this.cardService.createCard(this.card)
-      .subscribe(resp => console.log(resp));
+      .subscribe(resp => this.newGroup = resp);
     this.modalRef.hide();
   }
 

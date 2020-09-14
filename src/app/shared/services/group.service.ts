@@ -16,4 +16,8 @@ export class GroupService {
   public getAllGroups(){
     return this.http.get<Group[]>(`/api/group/all`);
   }
+
+  public getGroupInfo(groupId: number){
+    return this.http.get<Group>(`/api/group/${groupId}`);
+  }
 }

@@ -4,6 +4,7 @@ export class Card extends Url{
     title: string;
     description: string;
     icon: string;
+    groupid?: number;
 
     constructor(){
         super();

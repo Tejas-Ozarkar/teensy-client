@@ -1,5 +1,5 @@
 .navbar-wrap{
-    // background: white;
+    background: white;
     .logo{
         font-family: 'Pacifico', cursive;
     }
@@ -13,5 +13,10 @@
         background: #ddd;
         border-radius: 50%;
         cursor: pointer;
+    }
+    .nav-item {
+        &.active{
+            text-decoration: underline;
+        }
     }
 }

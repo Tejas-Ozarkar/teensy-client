@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Group } from 'src/app/shared/models/group.model';
 import { GroupService } from 'src/app/shared/services/group.service';
 
@@ -12,13 +13,18 @@ export class GroupsComponent implements OnInit {
   public groups: Group[];
 
   constructor(
-    private readonly groupService: GroupService
+    private readonly groupService: GroupService,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
     this.groupService.getAllGroups().subscribe(resp => {
       this.groups = resp;
     });
+  }
+
+  public gotoGroupInfo(id: number){
+    this.router.navigateByUrl(`/home/group/${id}`);
   }
 
 }

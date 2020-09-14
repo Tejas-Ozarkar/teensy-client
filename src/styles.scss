@@ -9,3 +9,31 @@ body{
     background: #eee;
     font-family: 'Oswald', sans-serif;
 }
+.card{
+    border-radius: 1px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    &:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    &:after{
+        content: '';
+        position: absolute;
+        left: 0px; 
+        top: 0px;
+        height: 100%;
+        width: 4px;
+        background: #2d4059;
+    }
+}
+
+.content-header{
+    background: white;
+}
+
+.btn-dark{
+    border-radius: 0px;
+    background: #333;
+    color: white;
+}
