@@ -11,10 +11,10 @@ script:
 deploy:
     provider: elasticbeanstalk
     region: "ap-south-1"
-    app: "teensy-fe"
-    env: "TeensyFe-env"
+    app: "teensy-frontend"
+    env: "TeensyFrontend-env"
     bucket_name: "elasticbeanstalk-ap-south-1-509006680370"
-    bucket_path: "teensy-fe"
+    bucket_path: "teensy-frontend"
     edge: true
     on:
         branch: master
