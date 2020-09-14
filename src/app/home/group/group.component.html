@@ -12,14 +12,14 @@
 </div>
 <div class="container-fluid mt-4">
   <div class="row">
-    <div class="col-md-3 mb-3" *ngFor="let card of cards">
+    <div class="col-md-3 mb-3" *ngFor="let card of cards" (click)="navigateTo('http://teensy.xyz/'+card.shorturl)">
       <div class="card p-3">
           <img class="new-window" src="assets/images/new-window.svg" height=20>
         <h3>{{card.title}}</h3>
         <p>{{card.description}}</p>
         <div class="url-link border p-2 d-flex justify-content-between">
            <span>teensy.xyz/{{card.shorturl}}</span> 
-           <button class="btn btn-default p-0 m-0" title="copy" (click)="onCopyLink('teensy.xyz/'+card.shorturl)">
+           <button class="btn btn-default p-0 m-0" title="copy" (click)="onCopyLink($event, 'teensy.xyz/'+card.shorturl)">
                <img src="assets/images/copy.svg" height="20">
            </button>
         </div>

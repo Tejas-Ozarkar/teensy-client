@@ -12,7 +12,7 @@ deploy:
     provider: elasticbeanstalk
     region: "ap-south-1"
     app: "teensy-client"
-    env: "TeensyClient-env"
+    env: "TeensyClient-env-1"
     bucket_name: "elasticbeanstalk-ap-south-1-509006680370"
     bucket_path: "teensy-client"
     edge: true

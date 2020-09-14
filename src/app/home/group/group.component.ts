@@ -50,8 +50,12 @@ export class GroupComponent implements OnInit {
       });
   }
 
-  public onCopyLink(url: string) {
+  public onCopyLink(e: Event, url: string) {
+    e.stopPropagation();
     navigator.clipboard.writeText(url);
   }
 
+  public navigateTo(url: string){
+    window.open(url, '_blank');
+  }
 }
