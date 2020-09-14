@@ -13,7 +13,7 @@ export class CreateCardComponent {
   public card: Card;
   public newGroup: object;
 
-  public groupId: number
+  public groupId: number;
 
   constructor(
     public modalRef: BsModalRef,

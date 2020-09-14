@@ -33,25 +33,24 @@ export class GroupComponent implements OnInit {
         this.group = group;
         this.cardService.getCardsByGroup(groupId)
           .subscribe(cards => this.cards = cards);
-      })
+      });
   }
 
-  
+
   public openCreateCardModal() {
     const initialState = {
       groupId: this.route.snapshot.params.groupId
-    }
-    this.modalRef = this.modalService.show(CreateCardComponent, {initialState});
-    this.modalService.onHide
+    };
+    this.modalRef = this.modalService.show(CreateCardComponent, { initialState });
     this.modalRef.content.closeBtnName = 'Close';
     this.modalService.onHide
-    .pipe(take(1))
-    .subscribe(() => {
-       this.cards.push(this.modalRef.content.newGroup);
-    });
+      .pipe(take(1))
+      .subscribe(() => {
+        this.cards.push(this.modalRef.content.newGroup);
+      });
   }
 
-  public onCopyLink(url: string){
+  public onCopyLink(url: string) {
     navigator.clipboard.writeText(url);
   }
 
