@@ -1,22 +1,28 @@
-sudo: required
-services:
-    - docker
+os: linux
+language: node_js
+node_js:
+  - "14"
+dist: trusty
 
-before_install:
-    - docker build -t tejozarkar/docker-angular -f Dockerfile.dev . 
+branches:
+  only:
+    - master
+
+before_script:
+  - npm install -g @angular/cli
 
 script:
-    - docker run -e CI=true -p 80:3000 tejozarkar/docker-angular npm run lint
+  - ng lint
+  - ng build --prod --base-href http://teensy-client.s3-website.ap-south-1.amazonaws.com
 
 deploy:
-    provider: elasticbeanstalk
-    region: "ap-south-1"
-    app: "teensy-client"
-    env: "TeensyClient-env"
-    bucket_name: "elasticbeanstalk-ap-south-1-509006680370"
-    bucket_path: "teensy-client"
-    edge: true
-    on:
-        branch: master
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
+  provider: s3
+  bucket: "teensy-client"
+  region: "ap-south-1"
+  skip_cleanup: true
+  local_dir: dist/teensy-client
+  edge: true
+  on:
+   branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
