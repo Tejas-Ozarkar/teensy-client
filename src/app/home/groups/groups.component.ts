@@ -24,7 +24,7 @@ export class GroupsComponent implements OnInit {
   }
 
   public gotoGroupInfo(id: number){
-    this.router.navigateByUrl(`/home/group/${id}`);
+    this.router.navigateByUrl(`/group/${id}`);
   }
 
 }

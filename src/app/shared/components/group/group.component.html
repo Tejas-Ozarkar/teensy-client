@@ -1,7 +1,7 @@
 <div class="content-header p-3" *ngIf="group">
   <div class="d-flex align-items-center">
     <a class="btn btn-default p-0 m-0" routerLink="/home">
-      <img src="assets/images/left-arrow.svg" height=20>
+      <img src="assets/images/left-arrow.svg" height=20 (click)="goBack()">
     </a>
     <h3 class="ml-3 mt-2">{{group.title}}</h3>
   </div>

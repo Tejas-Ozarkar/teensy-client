@@ -9,9 +9,16 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public isSignedIn: boolean;
+
+  constructor() {
+    this.isSignedIn = false;
+  }
 
   ngOnInit(): void {
+    if (localStorage.getItem('loggedin-user')) {
+      this.isSignedIn = true;
+    }
   }
 
 }

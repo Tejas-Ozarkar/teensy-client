@@ -10,15 +10,19 @@ export class GroupService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public createGroup(group: Group){
+  public createGroup(group: Group) {
     return this.http.post<Group>(`${environment.api_endpoint}/group`, group);
   }
 
-  public getAllGroups(){
-    return this.http.get<Group[]>(`${environment.api_endpoint}/group/all`);
+  public getAllGroups() {
+    return this.http.get<Group[]>(`${environment.api_endpoint}/group/all`, { headers: { skip: 'true' } });
   }
 
-  public getGroupInfo(groupId: number){
+  public getGroupInfo(groupId: number) {
     return this.http.get<Group>(`${environment.api_endpoint}/group/${groupId}`);
+  }
+
+  public getUserGroups(){
+    return this.http.get<Group[]>(`${environment.api_endpoint}/group`);
   }
 }

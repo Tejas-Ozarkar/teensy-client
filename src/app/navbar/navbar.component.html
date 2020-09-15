@@ -2,25 +2,29 @@
   <div>
     <h4 class="d-inline-block logo mr-3">teensy</h4>
     <a class="nav-item" routerLink="/home" routerLinkActive="active">Home</a>
-    <a class="nav-item" routerLink="/card" routerLinkActive="active">My Cards</a>
-    <a class="nav-item" routerLink="/groups" routerLinkActive="active">My Groups</a>
+    <a class="nav-item" routerLink="/my-cards" routerLinkActive="active" *ngIf="isSignedIn">My Cards</a>
+    <a class="nav-item" routerLink="/my-groups" routerLinkActive="active" *ngIf="isSignedIn">My Groups</a>
   </div>
-  <div class="menu-wrap d-flex justify-content-center align-items-center">
-    <div class="btn-group" dropdown>
-      <button id="button-basic" dropdownToggle type="button" class="btn btn-default"
-              style="margin-top: -4px"
-              aria-controls="dropdown-basic">
-        <img src="assets/images/menu.svg" height="15">
-      </button>
-      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right overflow-hidden"
-          role="menu" aria-labelledby="button-basic">
-        <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-        <li class="divider dropdown-divider"></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Logout</a>
-        </li>
-      </ul>
+  <div class="d-flex">
+    <a routerLink="/auth/signup" class="btn btn-default" *ngIf="!isSignedIn">signup</a>
+    <a routerLink="/auth/signin" class="btn btn-dark" style="color: white" *ngIf="!isSignedIn">signin</a>
+    <div class="menu-wrap d-flex justify-content-center align-items-center" *ngIf="isSignedIn">
+      <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-default"
+                style="margin-top: -4px"
+                aria-controls="dropdown-basic">
+          <img src="assets/images/menu.svg" height="15">
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right overflow-hidden"
+            role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item" href="#">Profile</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -9,8 +9,10 @@ import { UrlService } from '../../services/url.service';
   styleUrls: ['./create-url.component.scss']
 })
 export class CreateUrlComponent implements OnInit {
-  closeBtnName: string;
+
+  public closeBtnName: string;
   public url: Url;
+  public isResultReceived: boolean;
 
   constructor(
     public modalRef: BsModalRef,
@@ -22,12 +24,21 @@ export class CreateUrlComponent implements OnInit {
   }
 
   public createUrl() {
-    this.urlService.createTinyUrl(this.url)
-      .subscribe(resp => {
-
-      });
-    this.modalRef.hide();
+    if (this.url.longurl.startsWith('http://') || this.url.longurl.startsWith('https://')) {
+      this.urlService.createTinyUrl(this.url)
+        .subscribe(resp => {
+          this.url = resp;
+          this.isResultReceived = true;
+        });
+    }else{
+      console.log('invalid url');
+    }
 
   }
+
+  public onCopyLink(url: string) {
+    navigator.clipboard.writeText(url);
+  }
+
 }
 

@@ -11,11 +11,11 @@ export class UrlService {
   constructor(private readonly http: HttpClient) { }
 
   public createTinyUrl(url: Url) {
-    return this.http.post<Url>(`${environment.api_endpoint}/url`, url);
+    return this.http.post<Url>(`${environment.api_endpoint}/url`, url, { headers: { skip: 'true' } });
   }
 
   public getLongUrl(shortUrl: string) {
     const params = new HttpParams().set('shortUrl', shortUrl);
-    return this.http.get(`${environment.api_endpoint}/url/${shortUrl}`);
+    return this.http.get(`${environment.api_endpoint}/url/${shortUrl}`, { headers: { skip: 'true' } });
   }
 }

@@ -5,6 +5,7 @@ import { CreateGroupComponent } from './components/create-group/create-group.com
 import { CreateUrlComponent } from './components/create-url/create-url.component';
 import { CustomModalComponent } from './components/custom-modal/custom-modal.component';
 import { FormsModule } from '@angular/forms';
+import { GroupComponent } from './components/group/group.component';
 
 
 
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
     CreateCardComponent,
     CreateGroupComponent,
     CreateUrlComponent,
-    CustomModalComponent
+    CustomModalComponent,
+    GroupComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     CreateCardComponent,
     CreateGroupComponent,
     CreateUrlComponent,
-    CustomModalComponent
+    CustomModalComponent,
+    GroupComponent
   ]
 })
 export class SharedModule { }

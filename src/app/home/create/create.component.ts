@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { CreateCardComponent } from 'src/app/shared/components/create-card/create-card.component';
@@ -12,13 +12,20 @@ import { CreateUrlComponent } from 'src/app/shared/components/create-url/create-
   providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: false, autoClose: true } }]
 
 })
-export class CreateComponent {
+export class CreateComponent  implements OnInit{
 
   public modalRef: BsModalRef;
+  public isSignedIn: boolean;
 
   constructor(
     private readonly modalService: BsModalService,
   ) {
+  }
+
+  ngOnInit(){
+    if (localStorage.getItem('loggedin-user')) {
+      this.isSignedIn = true;
+    }
   }
 
   public openCreateUriModal() {

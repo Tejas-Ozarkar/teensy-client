@@ -18,4 +18,8 @@ export class CardService {
   public getCardsByGroup(groupId: number){
     return this.http.get<CardResponse[]>(`${environment.api_endpoint}/card/${groupId}`);
   }
+
+  public getUserCards(){
+    return this.http.get<CardResponse[]>(`${environment.api_endpoint}/card`);
+  }
 }

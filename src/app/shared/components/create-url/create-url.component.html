@@ -1,22 +1,37 @@
-<app-custom-modal>
-  <div modal-header>
-    <h4 class="modal-title pull-left"> Create Url </h4>
-    <button type="button"
-            class="close pull-right"
-            aria-label="Close"
-            (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div modal-body>
+<div class="modal-header">
+  <h4 class="modal-title pull-left"> Create Url </h4>
+  <button type="button"
+          class="close pull-right"
+          aria-label="Close"
+          (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div *ngIf="!isResultReceived">
+    <label>Enter your URL</label>
     <input type="text"
+           class="input-box"
+           placeholder="e.g. https://www.google.com"
            [(ngModel)]="url.longurl">
+    <small class="text-secondary">Must start with http/https</small>
   </div>
-  <div modal-footer>
-    <button class="btn btn-success"
-            (click)="createUrl()">Create</button>
-    <button type="button"
-            class="btn btn-default"
-            (click)="modalRef.hide()">Close</button>
+  <div *ngIf="isResultReceived">
+    <label>Long URL</label>
+    <div class="border p-2 mb-3"> {{url.longurl}} </div>
+    <label>Short URL</label>
+    <div class="url-link border p-2 d-flex justify-content-between">
+      <span>teensy.xyz/{{url.shorturl}}</span>
+      <button class="btn btn-default p-0 m-0" title="copy" (click)="onCopyLink('http://teensy.xyz'+url.shorturl)">
+        <img src="assets/images/copy.svg" height="20">
+      </button>
+    </div>
   </div>
-</app-custom-modal>
+</div>
+<div class="modal-footer">
+  <button type="button"
+          class="btn btn-default"
+          (click)="modalRef.hide()">Close</button>
+  <button *ngIf="!isResultReceived" class="btn btn-dark"
+          (click)="createUrl()">Create</button>
+</div>

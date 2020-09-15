@@ -11,7 +11,8 @@ import { GroupService } from 'src/app/shared/services/group.service';
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
-  styleUrls: ['./group.component.scss']
+  styleUrls: ['./group.component.scss'],
+  providers: [BsModalService]
 })
 export class GroupComponent implements OnInit {
 
@@ -52,6 +53,10 @@ export class GroupComponent implements OnInit {
 
   public onCopyLink(url: string) {
     navigator.clipboard.writeText(url);
+  }
+
+  public goBack(){
+    history.back();
   }
 
 }
