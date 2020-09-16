@@ -1,10 +1,20 @@
-<div *ngIf="groups" class="container-fluid mt-4">
-  <div class="row">
-    <div class="col-md-3" *ngFor="let group of groups" (click)="gotoGroupInfo(group.id)">
-      <div class="card p-3 mb-3">
-        <h4> {{group.title}} </h4>
-        <p> {{group.description}} </p>
+<div class="text-right p-3">
+  <button class="btn btn-dark" (click)="openCreateGroupModal()">Add Group</button>
+</div>
+<ng-container *ngIf="groups">
+  <div *ngIf="groups.length;else noGroup" class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let group of groups" (click)="gotoGroupInfo(group.id)">
+        <div class="card p-3 mb-3">
+          <h4> {{group.title}} </h4>
+          <p> {{group.description}} </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <ng-template #noGroup>
+    <div class="d-flex justify-content-center align-items-center flex-column h-100">
+      <h4 class="my-4"> No group found! </h4>
+    </div>
+  </ng-template>
+</ng-container>

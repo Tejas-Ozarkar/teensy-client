@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { User } from 'src/app/shared/models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -10,17 +11,20 @@ import { User } from 'src/app/shared/models/user.model';
 export class SigninComponent implements OnInit {
   public user: User;
 
-  constructor(private readonly authService: AuthService) {
+  constructor(
+    private readonly router: Router,
+    private readonly authService: AuthService) {
     this.user = new User();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   public signIn(): void {
     this.authService.signin(this.user).subscribe(
       (resp) => {
-        console.log(resp);
         localStorage.setItem('loggedin-user', JSON.stringify(resp));
+        window.location.href = '/';
+
       },
       (err) => {
         localStorage.removeItem('loggedin-user');

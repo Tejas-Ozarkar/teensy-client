@@ -1,4 +1,10 @@
-
-<input type="text" [(ngModel)]="user.username">
-<input type="text" [(ngModel)]="user.password">
-<button class="btn btn-default" (click)="signIn()">signin</button>
+<div class="d-flex justify-content-center align-items-center flex-column p-3">
+  <div>
+    <label>Username</label>
+    <input class="input-box mb-3" type="text" [(ngModel)]="user.username">
+    <label>Password</label>
+    <input class="input-box mb-3" type="password" [(ngModel)]="user.password">
+    <button class="btn btn-default btn-dark" (click)="signIn()">SignIn</button>
+    <a routerLink="/auth/signup" class="btn btn-default">SignUp</a>
+  </div>
+</div>

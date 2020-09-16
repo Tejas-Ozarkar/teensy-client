@@ -11,6 +11,7 @@ import { GroupService } from '../../services/group.service';
 export class CreateGroupComponent {
 
   public group: Group;
+  public newGroup: Group;
 
   constructor(
     public modalRef: BsModalRef,
@@ -20,7 +21,7 @@ export class CreateGroupComponent {
 
   public createGroup() {
     this.groupService.createGroup(this.group)
-      .subscribe(resp => console.log(resp));
+      .subscribe(group => this.newGroup = group);
     this.modalRef.hide();
   }
 

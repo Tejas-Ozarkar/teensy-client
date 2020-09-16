@@ -1,10 +1,20 @@
+<div class="top-wrap d-flex justify-content-between px-3 mt-4">
+  <input type="text" class="search-bar" placeholder="Search for Group" [(ngModel)]=searchQuery>
+  <app-create></app-create>
+</div>
 <div *ngIf="groups" class="container-fluid mt-4">
-  <div class="row">
-    <div class="col-md-3" *ngFor="let group of groups" (click)="gotoGroupInfo(group.id)">
+  <div *ngIf="groups.length; else noGroups" class="row">
+    <div class="col-md-3" *ngFor="let group of groups | filter:searchQuery" (click)="gotoGroupInfo(group.id)">
       <div class="card p-3 mb-3">
         <h4> {{group.title}} </h4>
         <p> {{group.description}} </p>
       </div>
     </div>
   </div>
+  <ng-template #noGroups>
+    <div class="d-flex justify-content-center align-items-center flex-column h-100">
+      <h4 class="my-4"> No group found! </h4>
+      <app-create></app-create>
+    </div>
+  </ng-template>
 </div>

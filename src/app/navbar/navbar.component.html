@@ -1,6 +1,8 @@
 <div class="navbar-wrap d-flex align-items-center justify-content-between py-2 px-3">
   <div>
-    <h4 class="d-inline-block logo mr-3">teensy</h4>
+    <a routerLink="/">
+      <h4 class="d-inline-block logo mr-3">teensy</h4>
+    </a>
     <a class="nav-item" routerLink="/home" routerLinkActive="active">Home</a>
     <a class="nav-item" routerLink="/my-cards" routerLinkActive="active" *ngIf="isSignedIn">My Cards</a>
     <a class="nav-item" routerLink="/my-groups" routerLinkActive="active" *ngIf="isSignedIn">My Groups</a>
@@ -21,7 +23,7 @@
           <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
           <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
           <li class="divider dropdown-divider"></li>
-          <li role="menuitem"><a class="dropdown-item" href="#">Logout</a>
+          <li role="menuitem"><a class="dropdown-item" (click)="logout()">Logout</a>
           </li>
         </ul>
       </div>

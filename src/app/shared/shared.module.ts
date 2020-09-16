@@ -6,6 +6,8 @@ import { CreateUrlComponent } from './components/create-url/create-url.component
 import { CustomModalComponent } from './components/custom-modal/custom-modal.component';
 import { FormsModule } from '@angular/forms';
 import { GroupComponent } from './components/group/group.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FilterPipe } from './pipes/FilterPipe';
 
 
 
@@ -15,18 +17,21 @@ import { GroupComponent } from './components/group/group.component';
     CreateGroupComponent,
     CreateUrlComponent,
     CustomModalComponent,
-    GroupComponent
+    GroupComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    BsDatepickerModule
   ],
   exports: [
     CreateCardComponent,
     CreateGroupComponent,
     CreateUrlComponent,
     CustomModalComponent,
-    GroupComponent
+    GroupComponent,
+    FilterPipe
   ]
 })
 export class SharedModule { }

@@ -17,7 +17,11 @@ export class RedirectionComponent implements OnInit {
   ngOnInit(): void {
     this.urlService.getLongUrl(this.route.snapshot.params.id)
       .subscribe((resp: Url) => {
-        window.location.href = resp.longurl;
+        if (resp) {
+          window.location.href = resp.longurl;
+        }
+      }, err => {
+        console.log('err', err);
       });
   }
 

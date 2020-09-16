@@ -10,20 +10,27 @@
     <button class="btn btn-default btn-dark" (click)="openCreateCardModal()">Add new card</button>
   </div>
 </div>
-<div class="container-fluid mt-4">
-  <div class="row">
-    <div class="col-md-3 mb-3" *ngFor="let card of cards">
-      <div class="card p-3">
+<ng-container *ngIf="cards">
+  <div *ngIf="cards.length; else noCards" class="container-fluid mt-4">
+    <div class="row">
+      <div class="col-md-3 mb-3" *ngFor="let card of cards" (click)="gotoLink(card.longurl)">
+        <div class="card p-3">
           <img class="new-window" src="assets/images/new-window.svg" height=20>
-        <h3>{{card.title}}</h3>
-        <p>{{card.description}}</p>
-        <div class="url-link border p-2 d-flex justify-content-between">
-           <span>teensy.xyz/{{card.shorturl}}</span> 
-           <button class="btn btn-default p-0 m-0" title="copy" (click)="onCopyLink('teensy.xyz/'+card.shorturl)">
-               <img src="assets/images/copy.svg" height="20">
-           </button>
+          <h3>{{card.title}}</h3>
+          <p>{{card.description}}</p>
+          <div class="url-link border p-2 d-flex justify-content-between">
+            <span>teensy.xyz/{{card.shorturl}}</span>
+            <button class="btn btn-default p-0 m-0" title="copy" (click)="onCopyLink($event, 'http://teensy.xyz/'+card.shorturl)">
+              <img src="assets/images/copy.svg" height="20">
+            </button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <ng-template #noCards>
+    <div class="d-flex justify-content-center align-items-center flex-column h-100">
+      <h4 class="my-4"> No card found! </h4>
+    </div>
+  </ng-template>
+</ng-container>

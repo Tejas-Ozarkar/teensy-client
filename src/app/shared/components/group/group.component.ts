@@ -47,15 +47,25 @@ export class GroupComponent implements OnInit {
     this.modalService.onHide
       .pipe(take(1))
       .subscribe(() => {
-        this.cards.push(this.modalRef.content.newGroup);
+        if (this.modalRef.content.newCard) {
+          this.cards.push(this.modalRef.content.newCard);
+        }
       });
   }
 
-  public onCopyLink(url: string) {
+  public onCopyLink(e: Event, url: string) {
+    e.stopPropagation();
     navigator.clipboard.writeText(url);
   }
 
-  public goBack(){
+  public gotoLink(url: string) {
+    window.open(
+      url,
+      '_blank'
+    );
+  }
+
+  public goBack() {
     history.back();
   }
 

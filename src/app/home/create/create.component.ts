@@ -12,9 +12,11 @@ import { CreateUrlComponent } from 'src/app/shared/components/create-url/create-
   providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: false, autoClose: true } }]
 
 })
-export class CreateComponent  implements OnInit{
+export class CreateComponent implements OnInit {
 
-  public modalRef: BsModalRef;
+  public urlModalRef: BsModalRef;
+  public cardModalRef: BsModalRef;
+  public groupModalRef: BsModalRef;
   public isSignedIn: boolean;
 
   constructor(
@@ -22,25 +24,25 @@ export class CreateComponent  implements OnInit{
   ) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     if (localStorage.getItem('loggedin-user')) {
       this.isSignedIn = true;
     }
   }
 
   public openCreateUriModal() {
-    this.modalRef = this.modalService.show(CreateUrlComponent);
-    this.modalRef.content.closeBtnName = 'Close';
+    this.urlModalRef = this.modalService.show(CreateUrlComponent);
+    this.urlModalRef.content.closeBtnName = 'Close';
   }
 
   public openCreateCardModal() {
-    this.modalRef = this.modalService.show(CreateCardComponent);
-    this.modalRef.content.closeBtnName = 'Close';
+    this.cardModalRef = this.modalService.show(CreateCardComponent);
+    this.cardModalRef.content.closeBtnName = 'Close';
   }
 
   public openCreateGroupModal() {
-    this.modalRef = this.modalService.show(CreateGroupComponent);
-    this.modalRef.content.closeBtnName = 'Close';
+    this.groupModalRef = this.modalService.show(CreateGroupComponent);
+    this.groupModalRef.content.closeBtnName = 'Close';
   }
 
 }

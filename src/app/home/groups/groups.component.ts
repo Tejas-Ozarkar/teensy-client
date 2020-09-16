@@ -11,6 +11,7 @@ import { GroupService } from 'src/app/shared/services/group.service';
 export class GroupsComponent implements OnInit {
 
   public groups: Group[];
+  public searchQuery: string;
 
   constructor(
     private readonly groupService: GroupService,
@@ -23,7 +24,7 @@ export class GroupsComponent implements OnInit {
     });
   }
 
-  public gotoGroupInfo(id: number){
+  public gotoGroupInfo(id: number) {
     this.router.navigateByUrl(`/group/${id}`);
   }
 

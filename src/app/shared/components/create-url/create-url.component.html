@@ -15,6 +15,17 @@
            placeholder="e.g. https://www.google.com"
            [(ngModel)]="url.longurl">
     <small class="text-secondary">Must start with http/https</small>
+    <br>
+    <label>Expiry Date</label>
+    <input
+           class="input-box"
+           bsDatepicker
+           #datepickerFull="bsDatepicker"
+           [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY HH:mm:ss' }"
+           [(ngModel)]="url.expirydate">
+    <!-- <div class="col-xs-12 col-12 col-md-3 form-group">
+      <button class="btn btn-success" (click)="datepickerFull.toggle()" [attr.aria-expanded]="datepickerFull.isOpen" type="button">Date Picker</button>
+    </div> -->
   </div>
   <div *ngIf="isResultReceived">
     <label>Long URL</label>

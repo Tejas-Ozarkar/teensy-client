@@ -11,7 +11,7 @@ import { CardService } from '../../services/card.service';
 export class CreateCardComponent {
 
   public card: Card;
-  public newGroup: object;
+  public newCard: object;
 
   public groupId: number;
 
@@ -22,10 +22,13 @@ export class CreateCardComponent {
   }
 
   public createCard() {
-    this.card.groupid = this.groupId;
-    this.cardService.createCard(this.card)
-      .subscribe(resp => this.newGroup = resp);
-    this.modalRef.hide();
+    if (this.card.longurl.startsWith('http://') || this.card.longurl.startsWith('https://')) {
+
+      this.card.groupid = this.groupId;
+      this.cardService.createCard(this.card)
+        .subscribe(resp => this.newCard = resp);
+      this.modalRef.hide();
+    }
   }
 
 }
