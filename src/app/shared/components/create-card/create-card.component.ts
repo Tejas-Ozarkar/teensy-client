@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Card } from '../../models/card.model';
 import { CardService } from '../../services/card.service';
+import { SnackbarService } from '../snackbar/snackbar.service';
 
 @Component({
   selector: 'app-create-card',
@@ -16,6 +17,7 @@ export class CreateCardComponent {
   public groupId: number;
 
   constructor(
+    private readonly snackbar: SnackbarService,
     public modalRef: BsModalRef,
     private readonly cardService: CardService) {
     this.card = new Card();
@@ -28,6 +30,8 @@ export class CreateCardComponent {
       this.cardService.createCard(this.card)
         .subscribe(resp => this.newCard = resp);
       this.modalRef.hide();
+    }else{
+      this.snackbar.show('Invalid Url', 'danger');
     }
   }
 

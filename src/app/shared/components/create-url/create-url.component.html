@@ -8,7 +8,7 @@
   </button>
 </div>
 <div class="modal-body">
-  <div *ngIf="!isResultReceived">
+  <div *ngIf="!isResultReceived&&!loader">
     <label>Enter your URL</label>
     <input type="text"
            class="input-box"
@@ -17,17 +17,20 @@
     <small class="text-secondary">Must start with http/https</small>
     <br>
     <label>Expiry Date</label>
-    <input
-           class="input-box"
-           bsDatepicker
-           #datepickerFull="bsDatepicker"
-           [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY HH:mm:ss' }"
-           [(ngModel)]="url.expirydate">
-    <!-- <div class="col-xs-12 col-12 col-md-3 form-group">
-      <button class="btn btn-success" (click)="datepickerFull.toggle()" [attr.aria-expanded]="datepickerFull.isOpen" type="button">Date Picker</button>
-    </div> -->
+    <div class="datepicker-wrap">
+      <input
+             class="input-box"
+             bsDatepicker
+             #datepickerFull="bsDatepicker"
+             [bsConfig]="{ dateInputFormat: 'DD-MMM-YYYY HH:mm:ss' }"
+             [(ngModel)]="url.expirydate">
+      <button class="btn btn-default" (click)="datepickerFull.toggle()"
+              [attr.aria-expanded]="datepickerFull.isOpen"
+              type="button">
+        <img src="assets/images/calendar.svg" height=20></button>
+    </div>
   </div>
-  <div *ngIf="isResultReceived">
+  <div *ngIf="isResultReceived&&!loader">
     <label>Long URL</label>
     <div class="border p-2 mb-3"> {{url.longurl}} </div>
     <label>Short URL</label>
@@ -38,11 +41,15 @@
       </button>
     </div>
   </div>
+  <ng-container *ngIf="loader">
+    <app-loader></app-loader>
+  </ng-container>
 </div>
 <div class="modal-footer">
   <button type="button"
           class="btn btn-default"
           (click)="modalRef.hide()">Close</button>
   <button *ngIf="!isResultReceived" class="btn btn-dark"
-          (click)="createUrl()">Create</button>
+          (click)="createUrl()"
+          [disabled]="!url.longurl||!url.expirydate">Create</button>
 </div>

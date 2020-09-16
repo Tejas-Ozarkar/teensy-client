@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 import { Group } from 'src/app/shared/models/group.model';
 import { GroupService } from 'src/app/shared/services/group.service';
 
@@ -14,6 +15,7 @@ export class GroupsComponent implements OnInit {
   public searchQuery: string;
 
   constructor(
+    private readonly snackbarService: SnackbarService,
     private readonly groupService: GroupService,
     private readonly router: Router
   ) { }
@@ -21,7 +23,7 @@ export class GroupsComponent implements OnInit {
   ngOnInit(): void {
     this.groupService.getAllGroups().subscribe(resp => {
       this.groups = resp;
-    });
+    }, err => this.snackbarService.show('Something went wrong', 'danger'));
   }
 
   public gotoGroupInfo(id: number) {

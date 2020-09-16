@@ -2,7 +2,7 @@
   <input type="text" class="search-bar" placeholder="Search for Group" [(ngModel)]=searchQuery>
   <app-create></app-create>
 </div>
-<div *ngIf="groups" class="container-fluid mt-4">
+<div *ngIf="groups; else loader" class="container-fluid mt-4">
   <div *ngIf="groups.length; else noGroups" class="row">
     <div class="col-md-3" *ngFor="let group of groups | filter:searchQuery" (click)="gotoGroupInfo(group.id)">
       <div class="card p-3 mb-3">
@@ -18,3 +18,7 @@
     </div>
   </ng-template>
 </div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

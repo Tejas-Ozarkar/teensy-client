@@ -1,7 +1,7 @@
 <div class="text-right p-3">
   <button class="btn btn-dark" (click)="openCreateCardModal()">Add Card</button>
 </div>
-<ng-container *ngIf="cards">
+<ng-container *ngIf="cards; else loader">
   <div class="container-fluid mt-4" *ngIf="cards.length;else noCards">
     <div class="row">
       <div class="col-md-3 mb-3" *ngFor="let card of cards">
@@ -25,3 +25,7 @@
     </div>
   </ng-template>
 </ng-container>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

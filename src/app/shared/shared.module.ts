@@ -8,6 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { GroupComponent } from './components/group/group.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FilterPipe } from './pipes/FilterPipe';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 
@@ -18,7 +22,9 @@ import { FilterPipe } from './pipes/FilterPipe';
     CreateUrlComponent,
     CustomModalComponent,
     GroupComponent,
-    FilterPipe
+    FilterPipe,
+    SnackbarComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +37,9 @@ import { FilterPipe } from './pipes/FilterPipe';
     CreateUrlComponent,
     CustomModalComponent,
     GroupComponent,
-    FilterPipe
+    FilterPipe,
+    SnackbarComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
