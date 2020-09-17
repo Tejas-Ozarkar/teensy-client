@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { GenericResponse } from '../models/generic-response.model';
 import { Group } from '../models/group.model';
 
 @Injectable({
@@ -19,10 +20,14 @@ export class GroupService {
   }
 
   public getGroupInfo(groupId: number) {
-    return this.http.get<Group>(`${environment.api_endpoint}/group/${groupId}`);
+    return this.http.get<Group>(`${environment.api_endpoint}/group/${groupId}`, { headers: { skip: 'true' } });
   }
 
-  public getUserGroups(){
+  public getUserGroups() {
     return this.http.get<Group[]>(`${environment.api_endpoint}/group`);
+  }
+
+  public deleteGroup(id: string) {
+    return this.http.delete<GenericResponse>(`${environment.api_endpoint}/group/${id}`);
   }
 }

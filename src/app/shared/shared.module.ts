@@ -12,6 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { AdminsComponent } from './components/admins/admins.component';
 
 
 
@@ -24,7 +25,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     GroupComponent,
     FilterPipe,
     SnackbarComponent,
-    LoaderComponent
+    LoaderComponent,
+    AdminsComponent
   ],
   imports: [
     CommonModule,

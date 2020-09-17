@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { take } from 'rxjs/operators';
 import { CreateCardComponent } from '../shared/components/create-card/create-card.component';
+import { SnackbarService } from '../shared/components/snackbar/snackbar.service';
 import { CardResponse } from '../shared/models/card-response.model';
 import { CardService } from '../shared/services/card.service';
 
@@ -17,6 +18,7 @@ export class MyCardsComponent implements OnInit {
   public modalRef: BsModalRef;
 
   constructor(
+    private readonly snackbar: SnackbarService,
     private readonly modalService: BsModalService,
     private readonly cardService: CardService) { }
 
@@ -38,4 +40,24 @@ export class MyCardsComponent implements OnInit {
       });
   }
 
+  public onCopyLink(e: Event, url: string) {
+    e.stopPropagation();
+    navigator.clipboard.writeText(url);
+  }
+
+  public gotoLink(url: string) {
+    window.open(
+      url,
+      '_blank'
+    );
+  }
+
+  public deleteCard(e: Event, id: string, i: number) {
+    e.stopPropagation();
+    this.cardService.deleteCard(id)
+      .subscribe(resp => {
+        this.snackbar.show(resp.message);
+        this.cards.splice(i, 1);
+      });
+  }
 }

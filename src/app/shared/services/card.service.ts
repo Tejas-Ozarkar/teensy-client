@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CardResponse } from '../models/card-response.model';
 import { Card } from '../models/card.model';
+import { GenericResponse } from '../models/generic-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +12,19 @@ export class CardService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public createCard(card: Card){
+  public createCard(card: Card) {
     return this.http.post<CardResponse>(`${environment.api_endpoint}/card`, card);
   }
 
-  public getCardsByGroup(groupId: number){
-    return this.http.get<CardResponse[]>(`${environment.api_endpoint}/card/${groupId}`);
+  public getCardsByGroup(groupId: number) {
+    return this.http.get<CardResponse[]>(`${environment.api_endpoint}/card/${groupId}`, { headers: { skip: 'true' } });
   }
 
-  public getUserCards(){
+  public getUserCards() {
     return this.http.get<CardResponse[]>(`${environment.api_endpoint}/card`);
+  }
+
+  public deleteCard(id: string) {
+    return this.http.delete<GenericResponse>(`${environment.api_endpoint}/card/${id}`);
   }
 }

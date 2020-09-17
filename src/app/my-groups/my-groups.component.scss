@@ -1,0 +1,9 @@
+.card{
+    position:relative;
+    .right-side{
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: #666 !important;
+    }
+}

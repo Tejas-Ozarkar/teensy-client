@@ -7,6 +7,10 @@ import { Card } from 'src/app/shared/models/card.model';
 import { Group } from 'src/app/shared/models/group.model';
 import { CardService } from 'src/app/shared/services/card.service';
 import { GroupService } from 'src/app/shared/services/group.service';
+import { CheckAdmin } from '../../models/checkadmin.model';
+import { AdminService } from '../../services/admin.service';
+import { AdminsComponent } from '../admins/admins.component';
+import { SnackbarService } from '../snackbar/snackbar.service';
 
 @Component({
   selector: 'app-group',
@@ -19,11 +23,15 @@ export class GroupComponent implements OnInit {
   public cards: Card[];
   public group: Group;
   public modalRef: BsModalRef;
+  public adminModalRef: BsModalRef;
+  public isAdmin: boolean;
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly cardService: CardService,
     private readonly groupService: GroupService,
+    private readonly adminService: AdminService,
+    private readonly snackbar: SnackbarService,
     private readonly modalService: BsModalService
   ) { }
 
@@ -33,7 +41,13 @@ export class GroupComponent implements OnInit {
       .subscribe(group => {
         this.group = group;
         this.cardService.getCardsByGroup(groupId)
-          .subscribe(cards => this.cards = cards);
+          .subscribe(cards => {
+            this.cards = cards;
+            this.adminService.isAdmin(groupId)
+              .subscribe(resp => {
+                this.isAdmin = resp.isadmin;
+              });
+          });
       });
   }
 
@@ -51,6 +65,22 @@ export class GroupComponent implements OnInit {
           this.cards.push(this.modalRef.content.newCard);
         }
       });
+  }
+
+  public openAdminsModal() {
+    const initialState = {
+      groupId: this.group.id
+    };
+    this.adminModalRef = this.modalService.show(AdminsComponent, { initialState });
+  }
+
+  public deleteCard(e: Event,id: string, i: number){
+    e.stopPropagation();
+    this.cardService.deleteCard(id)
+    .subscribe(resp=>{
+      this.snackbar.show(resp.message);
+      this.cards.splice(i, 1);
+    });
   }
 
   public onCopyLink(e: Event, url: string) {
