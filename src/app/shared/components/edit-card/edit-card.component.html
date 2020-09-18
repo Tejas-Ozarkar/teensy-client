@@ -1,0 +1,32 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left"> Edit Card </h4>
+    <button type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label> Title</label>
+    <input type="text"
+           class="input-box mb-3"
+           [(ngModel)]="card.title">
+    <label> Description</label>
+    <input type="text"
+           class="input-box mb-3"
+           [(ngModel)]="card.description">
+    <label>Long Url</label>
+    <input type="text"
+           class="input-box"
+           [(ngModel)]="card.longurl">
+           <small class="text-secondary"> Must start with http/https</small>
+  </div>
+  <div class="modal-footer">
+    <button type="button"
+            class="btn btn-default"
+            (click)="modalRef.hide()">Close</button>
+    <button class="btn btn-success btn-dark"
+            (click)="editCard()">Edit</button>
+  </div>
+  

@@ -20,6 +20,7 @@
       <div class="col-md-3 mb-3" *ngFor="let card of cards; index as i" (click)="gotoLink(card.longurl)">
         <div class="card p-3">
           <div class="right-side">
+            <img *ngIf="isAdmin" src="assets/images/pencil.svg" height=15 class="mr-2" (click)="editCard($event, card.id, i)">
             <img *ngIf="isAdmin" src="assets/images/delete.svg" height=15 class="mr-2" (click)="deleteCard($event, card.id, i)">
             <img class="new-window" src="assets/images/new-window.svg" height=20>
           </div>

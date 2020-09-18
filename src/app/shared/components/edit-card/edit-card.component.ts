@@ -5,16 +5,15 @@ import { CardService } from '../../services/card.service';
 import { SnackbarService } from '../snackbar/snackbar.service';
 
 @Component({
-  selector: 'app-create-card',
-  templateUrl: './create-card.component.html',
-  styleUrls: ['./create-card.component.scss']
+  selector: 'app-edit-card',
+  templateUrl: './edit-card.component.html',
+  styleUrls: ['./edit-card.component.scss']
 })
-export class CreateCardComponent {
+export class EditCardComponent implements OnInit {
 
   public card: Card;
   public newCard: object;
-
-  public groupId: number;
+  public cardId: number;
 
   constructor(
     private readonly snackbar: SnackbarService,
@@ -23,15 +22,19 @@ export class CreateCardComponent {
     this.card = new Card();
   }
 
-  public createCard() {
+  ngOnInit(): void {
+    this.cardService.getCard(this.cardId)
+      .subscribe(card => this.card = card);
+  }
+
+  public editCard() {
     if (this.card.longurl.startsWith('http://') || this.card.longurl.startsWith('https://')) {
-      this.card.groupid = this.groupId;
-      this.cardService.createCard(this.card)
+
+      this.cardService.editCard(this.cardId, this.card)
         .subscribe(resp => this.newCard = resp);
       this.modalRef.hide();
-    }else{
+    } else {
       this.snackbar.show('Invalid Url', 'danger');
     }
   }
-
 }

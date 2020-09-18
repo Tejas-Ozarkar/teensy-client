@@ -10,6 +10,7 @@ import { GroupService } from 'src/app/shared/services/group.service';
 import { CheckAdmin } from '../../models/checkadmin.model';
 import { AdminService } from '../../services/admin.service';
 import { AdminsComponent } from '../admins/admins.component';
+import { EditCardComponent } from '../edit-card/edit-card.component';
 import { SnackbarService } from '../snackbar/snackbar.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class GroupComponent implements OnInit {
   public group: Group;
   public modalRef: BsModalRef;
   public adminModalRef: BsModalRef;
+  public editModalRef: BsModalRef;
   public isAdmin: boolean;
 
   constructor(
@@ -74,13 +76,29 @@ export class GroupComponent implements OnInit {
     this.adminModalRef = this.modalService.show(AdminsComponent, { initialState });
   }
 
-  public deleteCard(e: Event,id: string, i: number){
+  public deleteCard(e: Event, id: string, i: number) {
     e.stopPropagation();
     this.cardService.deleteCard(id)
-    .subscribe(resp=>{
-      this.snackbar.show(resp.message);
-      this.cards.splice(i, 1);
-    });
+      .subscribe(resp => {
+        this.snackbar.show(resp.message);
+        this.cards.splice(i, 1);
+      });
+  }
+
+  public editCard(e: Event, id: string, i: number) {
+    e.stopPropagation();
+    const initialState = {
+      cardId: id
+    };
+    this.modalRef = this.modalService.show(EditCardComponent, { initialState });
+    this.modalService.onHide
+      .pipe(take(1))
+      .subscribe(() => {
+        if (this.modalRef.content.newCard) {
+          this.cards.splice(i, 1);
+          this.cards.splice(i, 0, this.modalRef.content.newCard);
+        }
+      });
   }
 
   public onCopyLink(e: Event, url: string) {

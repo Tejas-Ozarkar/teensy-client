@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { AdminsComponent } from './components/admins/admins.component';
+import { EditCardComponent } from './components/edit-card/edit-card.component';
 
 
 
@@ -26,7 +27,8 @@ import { AdminsComponent } from './components/admins/admins.component';
     FilterPipe,
     SnackbarComponent,
     LoaderComponent,
-    AdminsComponent
+    AdminsComponent,
+    EditCardComponent
   ],
   imports: [
     CommonModule,

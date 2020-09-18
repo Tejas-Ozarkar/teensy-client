@@ -17,7 +17,7 @@ export class CardService {
   }
 
   public getCardsByGroup(groupId: number) {
-    return this.http.get<CardResponse[]>(`${environment.api_endpoint}/card/${groupId}`, { headers: { skip: 'true' } });
+    return this.http.get<CardResponse[]>(`${environment.api_endpoint}/card/bygroup/${groupId}`, { headers: { skip: 'true' } });
   }
 
   public getUserCards() {
@@ -26,5 +26,13 @@ export class CardService {
 
   public deleteCard(id: string) {
     return this.http.delete<GenericResponse>(`${environment.api_endpoint}/card/${id}`);
+  }
+
+  public getCard(id: number){
+    return this.http.get<Card>(`${environment.api_endpoint}/card/${id}`);
+  }
+
+  public editCard(id: number, card: Card){
+    return this.http.patch<Card>(`${environment.api_endpoint}/card/${id}`, card);
   }
 }
