@@ -43,6 +43,7 @@ export class MyCardsComponent implements OnInit {
   public onCopyLink(e: Event, url: string) {
     e.stopPropagation();
     navigator.clipboard.writeText(url);
+    this.snackbar.show('Link copied to clipboard');
   }
 
   public gotoLink(url: string) {

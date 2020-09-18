@@ -52,6 +52,7 @@ export class CreateUrlComponent implements OnInit {
 
   public onCopyLink(url: string) {
     navigator.clipboard.writeText(url);
+    this.snackbar.show('Link copied to clipboard');
   }
 
 }
