@@ -1,4 +1,4 @@
-# Teensy Url
+# teensy.xyz - Tiny Url Generator
 
 **Live Project URL**: 
  [http://teensy.xyz](http://teensy.xyz)
@@ -25,7 +25,11 @@
 - **Backend** https://github.com/Tejas-Ozarkar/teensy-server
 
 **Database structure**
+
+
 ![database](http://teensy-client.s3-website.ap-south-1.amazonaws.com/assets/images/db-design.png)
 
 **Deployment process**
+
+
 ![database](http://teensy-client.s3-website.ap-south-1.amazonaws.com/assets/images/ci-process.png)
