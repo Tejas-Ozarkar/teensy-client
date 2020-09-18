@@ -11,8 +11,10 @@
     **Password:** admin
 
 **Project Stack:**
-- **Frontend:** Angular 8
+- **Frontend:** Angular 9
 - **Backend:** Java(Spring Boot)
+- **Database Migration** Flyway
+- **Database Mapping** jOOQ
 - **Database:** MySQL
 - **CI:** travis-ci
 - **Container:** Docker
