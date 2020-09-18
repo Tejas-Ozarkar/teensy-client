@@ -2,7 +2,9 @@
 
 **Live Project URL**: 
  [http://teensy.xyz](http://teensy.xyz)
- [http://teensy-client.s3-website.ap-south-1.amazonaws.com](http://teensy-client.s3-website.ap-south-1.amazonaws.com/) - Alternative
+
+ Alternative - 
+ [http://teensy-client.s3-website.ap-south-1.amazonaws.com](http://teensy-client.s3-website.ap-south-1.amazonaws.com/) 
 
  **Default Credentials:**
     **Username:** admin
@@ -24,3 +26,4 @@
 ![database](http://teensy-client.s3-website.ap-south-1.amazonaws.com/assets/images/db-design.png)
 
 **Deployment process**
+![database](http://teensy-client.s3-website.ap-south-1.amazonaws.com/assets/images/ci-process.png)
