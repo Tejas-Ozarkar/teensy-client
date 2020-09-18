@@ -23,3 +23,4 @@
 **Database structure**
 ![database](http://teensy-client.s3-website.ap-south-1.amazonaws.com/assets/images/db-design.png)
 
+**Deployment process**
