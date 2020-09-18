@@ -51,7 +51,13 @@ export class CreateUrlComponent implements OnInit {
 
 
   public onCopyLink(url: string) {
-    navigator.clipboard.writeText(url);
+    const x = document.createElement('INPUT') as HTMLInputElement;
+    document.body.appendChild(x);
+    x.setAttribute('type', 'text');
+    x.setAttribute('value', url);
+    x.select();
+    document.execCommand('copy');
+    document.body.removeChild(x);
     this.snackbar.show('Link copied to clipboard');
   }
 
