@@ -1,27 +1,25 @@
-# TeensyClient
+# Teensy Url
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+**Live Project URL**: 
+ [http://teensy.xyz](http://teensy.xyz)
+ [http://teensy-client.s3-website.ap-south-1.amazonaws.com](http://teensy-client.s3-website.ap-south-1.amazonaws.com/) - Alternative
 
-## Development server
+ **Default Credentials:**
+    **Username:** admin
+    **Password:** admin
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Project Stack:**
+- **Frontend:** Angular 8
+- **Backend:** Java(Spring Boot)
+- **Database:** MySQL
+- **CI:** travis-ci
+- **Container:** Docker
+- **Deployment:** AWS S3(Frontend), AWS Elastic Beanstack(Backend)
 
-## Code scaffolding
+**Github Repositories:**
+- **Frontend** https://github.com/Tejas-Ozarkar/teensy-client
+- **Backend** https://github.com/Tejas-Ozarkar/teensy-server
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Database structure**
+![database](http://teensy-client.s3-website.ap-south-1.amazonaws.com/assets/images/db-design.png)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
